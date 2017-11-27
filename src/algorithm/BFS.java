@@ -26,6 +26,8 @@ public class BFS {
                 System.out.println("[BFS] Goal Reached !");
                 return s.actionSequence;
             }else{
+                //Close Current State
+                closed.add(s.state);
                 //Expand Childs
                 for(Action a : p.actions(s.state)){
                     State targetState = p.result(s.state,a);
