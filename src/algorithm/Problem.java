@@ -1,3 +1,8 @@
+package algorithm;
+
+import algorithm.Action;
+import algorithm.State;
+
 import java.util.ArrayList;
 
 public interface Problem {

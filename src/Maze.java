@@ -83,7 +83,7 @@ public class Maze extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             mazeButtons[x][y].setText("0");
-            System.out.println("Action Recorded : " + x + " , "+ y);
+            System.out.println("algorithm.Action Recorded : " + x + " , "+ y);
         }
     }*/
 
