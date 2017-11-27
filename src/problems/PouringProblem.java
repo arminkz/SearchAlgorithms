@@ -81,12 +81,17 @@ public class PouringProblem implements Problem {
 
 }
 
-class PouringState extends State{
+class PouringState implements State{
     public int flaskA;
     public int flaskB;
 
     public PouringState(int A,int B){
         flaskA = A;
         flaskB = B;
+    }
+
+    public boolean isEquals(State s){
+        PouringState ps = (PouringState)s;
+        return (ps.flaskA == flaskA && ps.flaskB == flaskB);
     }
 }
