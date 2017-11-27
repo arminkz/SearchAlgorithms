@@ -43,7 +43,7 @@ public class MainDriver {
             for(Action a : actions) System.out.print(a.actionCode + " ");
         }*/
 
-        //Solve Maze with BFS
+        //Solve Maze with UCS
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int m = scn.nextInt();
@@ -54,7 +54,7 @@ public class MainDriver {
             }
         }
         MazeProblem mp = new MazeProblem(n,m,map);
-        ArrayList<Action> actions = BFS.search(mp);
+        ArrayList<Action> actions = UCS.search(mp);
         if(actions != null){
             for(Action a : actions) System.out.print(a.actionCode + " ");
         }

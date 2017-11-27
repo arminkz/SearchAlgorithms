@@ -8,6 +8,12 @@ import java.util.Stack;
 
 public class DFS {
 
+    //Search without Depth Limit
+    public static ArrayList<Action> search(Problem p){
+        return search(p,-1);
+    }
+
+    //Search with Depth Limit (DLS)
     public static ArrayList<Action> search(Problem p,int depthLimit){
 
         Stack<Expandable> DFSStack = new Stack<>();
@@ -27,8 +33,8 @@ public class DFS {
             }else{
                 //Close Current State
                 closed.add(s.state);
-                //Dont Continue if Depth Limit Reached
-                if(s.actionSequence.size() >= depthLimit) continue;
+                //Dont Expand if Depth Limit Reached
+                if(depthLimit != -1 && s.actionSequence.size() >= depthLimit) continue;
                 //Expand Childs
                 for(Action a : p.actions(s.state)){
                     State targetState = p.result(s.state,a);
