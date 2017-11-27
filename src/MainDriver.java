@@ -30,7 +30,7 @@ public class MainDriver {
         }*/
 
         //Solve 8 Puzzle with DFS (Depth Limit 8)
-        Scanner scn = new Scanner(System.in);
+        /*Scanner scn = new Scanner(System.in);
         int[][] puzzle = new int[3][3];
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -39,6 +39,22 @@ public class MainDriver {
         }
         EightPuzzleProblem epp = new EightPuzzleProblem(puzzle);
         ArrayList<Action> actions = DFS.search(epp,9);
+        if(actions != null){
+            for(Action a : actions) System.out.print(a.actionCode + " ");
+        }*/
+
+        //Solve Maze with BFS
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+        int[][] map = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                map[i][j] = scn.nextInt();
+            }
+        }
+        MazeProblem mp = new MazeProblem(n,m,map);
+        ArrayList<Action> actions = BFS.search(mp);
         if(actions != null){
             for(Action a : actions) System.out.print(a.actionCode + " ");
         }
