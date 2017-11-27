@@ -10,16 +10,16 @@ public class DFS {
 
     public static ArrayList<Action> search(Problem p,int depthLimit){
 
-        Stack<StateActionSequence> DFSStack = new Stack<>();
+        Stack<Expandable> DFSStack = new Stack<>();
         ArrayList<State> closed = new ArrayList<>();
 
-        StateActionSequence initSAS = new StateActionSequence();
+        Expandable initSAS = new Expandable();
         initSAS.state = p.initialState();
         initSAS.actionSequence = new ArrayList<>();
 
         DFSStack.add(initSAS);
         while(!DFSStack.empty()){
-            StateActionSequence s = DFSStack.pop();
+            Expandable s = DFSStack.pop();
             if(p.goalTest(s.state)){
                 //Goal Reached
                 System.out.println("[DFS] Goal Reached !");
@@ -39,14 +39,14 @@ public class DFS {
                             break;
                         }
                     }
-                    for(StateActionSequence openState : DFSStack){
+                    for(Expandable openState : DFSStack){
                         if(openState.state.isEquals(targetState)){
                             mustAdd = false;
                             break;
                         }
                     }
                     if(mustAdd) {
-                        StateActionSequence SAS = new StateActionSequence();
+                        Expandable SAS = new Expandable();
                         SAS.state = targetState;
                         //Clone Parent Action Sequence
                         ArrayList<Action> asClone = new ArrayList<>();

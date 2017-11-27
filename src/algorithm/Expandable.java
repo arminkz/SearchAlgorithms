@@ -2,7 +2,7 @@ package algorithm;
 
 import java.util.ArrayList;
 
-public class StateActionSequence {
+public class Expandable {
     State state;
     ArrayList<Action> actionSequence;
 }

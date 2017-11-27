@@ -11,16 +11,16 @@ public class BFS {
 
     public static ArrayList<Action> search(Problem p){
 
-        Queue<StateActionSequence> BFSQueue = new LinkedList<>();
+        Queue<Expandable> BFSQueue = new LinkedList<>();
         ArrayList<State> closed = new ArrayList<>();
 
-        StateActionSequence initSAS = new StateActionSequence();
+        Expandable initSAS = new Expandable();
         initSAS.state = p.initialState();
         initSAS.actionSequence = new ArrayList<>();
 
         BFSQueue.add(initSAS);
         while(!BFSQueue.isEmpty()){
-            StateActionSequence s = BFSQueue.remove();
+            Expandable s = BFSQueue.remove();
             if(p.goalTest(s.state)){
                 //Goal Reached
                 System.out.println("[BFS] Goal Reached !");
@@ -38,14 +38,14 @@ public class BFS {
                             break;
                         }
                     }
-                    for(StateActionSequence openState : BFSQueue){
+                    for(Expandable openState : BFSQueue){
                         if(openState.state.isEquals(targetState)){
                             mustAdd = false;
                             break;
                         }
                     }
                     if(mustAdd) {
-                        StateActionSequence SAS = new StateActionSequence();
+                        Expandable SAS = new Expandable();
                         SAS.state = targetState;
                         //Clone Parent Action Sequence
                         ArrayList<Action> asClone = new ArrayList<>();
