@@ -17,7 +17,6 @@ public class AStar {
         initE.actionSequence = new ArrayList<>();
 
         ASQueue.add(initE);
-        closed.add(initE.state);
 
         while(!ASQueue.isEmpty()){
             Expandable s = ASQueue.remove();

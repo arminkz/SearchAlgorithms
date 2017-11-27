@@ -24,7 +24,6 @@ public class DFS {
         initE.actionSequence = new ArrayList<>();
 
         DFSStack.add(initE);
-        closed.add(initE.state);
 
         while(!DFSStack.empty()){
             Expandable s = DFSStack.pop();

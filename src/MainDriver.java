@@ -15,6 +15,13 @@ public class MainDriver {
             for(Action a : actions) System.out.print(a.actionCode + " ");
         }*/
 
+        //Solve Pouring Problem with Bidirectional
+        /*PouringProblem pp2 = new PouringProblem();
+        ArrayList<Action> actions2 = Bidirectional.search(pp2);
+        if(actions2 != null){
+            for(Action a : actions2) System.out.print(a.actionCode + " ");
+        }*/
+
         //Solve 8 Puzzle with BFS
         /*Scanner scn = new Scanner(System.in);
         int[][] puzzle = new int[3][3];
@@ -43,7 +50,21 @@ public class MainDriver {
             for(Action a : actions) System.out.print(a.actionCode + " ");
         }*/
 
-        //Solve visualization.Maze with UCS
+        //Solve 8 Puzzle with AStar
+        /*Scanner scn = new Scanner(System.in);
+        int[][] puzzle = new int[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                puzzle[i][j] = scn.nextInt();
+            }
+        }
+        EightPuzzleProblem epp = new EightPuzzleProblem(puzzle);
+        ArrayList<Action> actions = AStar.search(epp);
+        if(actions != null){
+            for(Action a : actions) System.out.print(a.actionCode + " ");
+        }*/
+
+        //Solve Maze with UCS
         /*Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int m = scn.nextInt();
@@ -59,8 +80,8 @@ public class MainDriver {
             for(Action a : actions) System.out.print(a.actionCode + " ");
         }*/
 
-        //Solve visualization.Maze with A*
-        Scanner scn = new Scanner(System.in);
+        //Solve Maze with A*
+        /*Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int m = scn.nextInt();
         int[][] map = new int[n][m];
@@ -71,6 +92,22 @@ public class MainDriver {
         }
         MazeProblem mp = new MazeProblem(n,m,map);
         ArrayList<Action> actions = AStar.search(mp);
+        if(actions != null){
+            for(Action a : actions) System.out.print(a.actionCode + " ");
+        }*/
+
+        //Solve Maze with BD
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+        int[][] map = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                map[i][j] = scn.nextInt();
+            }
+        }
+        MazeProblem mp = new MazeProblem(n,m,map);
+        ArrayList<Action> actions = Bidirectional.search(mp);
         if(actions != null){
             for(Action a : actions) System.out.print(a.actionCode + " ");
         }

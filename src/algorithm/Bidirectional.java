@@ -26,8 +26,8 @@ public class Bidirectional {
         QueueA.add(initA);
         QueueB.add(initB);
 
-        while(!QueueA.isEmpty() || !QueueB.isEmpty()){
-            ArrayList<Action> intersectionResult = intersect(p,QueueA,QueueB);
+        while(!QueueA.isEmpty() && !QueueB.isEmpty()){
+            ArrayList<Action> intersectionResult = intersect(p,closedA,closedB);
             if(intersectionResult != null){
                 //Goal Reached
                 System.out.println("[Bidirectional] Goal Reached !");
@@ -105,18 +105,18 @@ public class Bidirectional {
         return null;
     }
 
-    private static ArrayList<Action> intersect(BidirectionalProblem p , Queue<Expandable> qOrigin , Queue<Expandable> qGoal){
+    private static ArrayList<Action> intersect(BidirectionalProblem p , ArrayList<Expandable> qOrigin , ArrayList<Expandable> qGoal){
         for(Expandable eOrigin : qOrigin){
             for(Expandable eGoal : qGoal){
                 if(eOrigin.state.isEquals(eGoal.state)){
                     ArrayList<Action> finalActions = new ArrayList<>();
                     //Add Actions from Origin Normally
-                    for(Action aOrigin : eOrigin.actionSequence){
-                        finalActions.add(aOrigin);
+                    for (int i = 0; i < eOrigin.actionSequence.size(); i++) {
+                        finalActions.add(eOrigin.actionSequence.get(i));
                     }
-                    //Add Actions from Goal
-                    for(Action aGoal : eGoal.actionSequence){
-                        finalActions.add(aGoal);
+                    //Add Actions from Goal Reversed
+                    for (int i = eGoal.actionSequence.size() - 1; i >=0 ; i--) {
+                        finalActions.add(eGoal.actionSequence.get(i));
                     }
 
                     return finalActions;

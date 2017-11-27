@@ -4,7 +4,7 @@ import algorithm.*;
 
 import java.util.ArrayList;
 
-public class MazeProblem implements Problem {
+public class MazeProblem implements BidirectionalProblem {
 
     int[][] Map;
     int MapSizeX;
@@ -77,6 +77,51 @@ public class MazeProblem implements Problem {
         MazeState ms = (MazeState)s;
         //Using Manhattan Heuristic
         return (MapSizeX - 1 - ms.x) + (MapSizeY - 1 - ms.y);
+    }
+
+    @Override
+    public State goalState() {
+        return new MazeState(MapSizeX-1,MapSizeY-1);
+    }
+
+    @Override
+    public ArrayList<Action> actionsBd(State s) {
+        MazeState ms = (MazeState)s;
+        ArrayList<Action> acts = new ArrayList<>();
+
+        //0 : Move Left
+        //1 : Move Up
+        //2 : Move Right
+        //3 : Move Down
+
+        if(ms.x > 0 && Map[ms.y][ms.x - 1]!=0) acts.add(new Action(2));
+        if(ms.y > 0 && Map[ms.y - 1][ms.x]!=0) acts.add(new Action(3));
+        if(ms.x < MapSizeX - 1 && Map[ms.y][ms.x + 1]!=0) acts.add(new Action(0));
+        if(ms.y < MapSizeY - 1 && Map[ms.y + 1][ms.x]!=0) acts.add(new Action(1));
+
+        return acts;
+    }
+
+    @Override
+    public ArrayList<State> resultBd(State s, Action a) {
+        MazeState ms = (MazeState)s;
+
+        ArrayList<State> singleState = new ArrayList<>();
+        switch(a.actionCode){
+            case 2:
+                singleState.add(new MazeState(ms.x-1,ms.y));
+                break;
+            case 3:
+                singleState.add(new MazeState(ms.x,ms.y-1));
+                break;
+            case 0:
+                singleState.add(new MazeState(ms.x+1,ms.y));
+                break;
+            case 1:
+                singleState.add(new MazeState(ms.x,ms.y+1));
+                break;
+        }
+        return singleState;
     }
 }
 

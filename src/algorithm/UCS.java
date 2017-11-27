@@ -17,7 +17,6 @@ public class UCS {
         initE.actionSequence = new ArrayList<>();
 
         UCSQueue.add(initE);
-        closed.add(initE.state);
 
         while(!UCSQueue.isEmpty()){
             Expandable s = UCSQueue.remove();

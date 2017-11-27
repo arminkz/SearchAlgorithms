@@ -19,7 +19,6 @@ public class BFS {
         initE.actionSequence = new ArrayList<>();
 
         BFSQueue.add(initE);
-        closed.add(initE.state);
 
         while(!BFSQueue.isEmpty()){
             Expandable s = BFSQueue.remove();
