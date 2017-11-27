@@ -118,7 +118,17 @@ public class EightPuzzleProblem implements Problem {
 
     @Override
     public int heuristic(State s) {
-        return 0;
+        EightPuzzleState eps = (EightPuzzleState)s;
+        int h = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int val = eps.P[i][j];
+                int ti = val / 3;
+                int tj = val % 3;
+                h += Math.abs(i - ti) + Math.abs(j - tj);
+            }
+        }
+        return h;
     }
 
 }
