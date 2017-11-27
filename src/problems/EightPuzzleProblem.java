@@ -116,6 +116,11 @@ public class EightPuzzleProblem implements Problem {
         return 1;
     }
 
+    @Override
+    public int heuristic(State s) {
+        return 0;
+    }
+
 }
 
 class EightPuzzleState implements State{

@@ -1,6 +1,7 @@
 package problems;
 
 import algorithm.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -76,7 +77,13 @@ public class PouringProblem implements Problem {
 
     @Override
     public int utility(Action a) {
-        return 0;
+        return 1;
+    }
+
+    @Override
+    public int heuristic(State s) {
+        System.err.println("Heuristic is Not Supported in this Problem !");
+        throw new NotImplementedException();
     }
 
 }

@@ -1,20 +1,19 @@
 package algorithm;
 
-import algorithm.Action;
-import algorithm.State;
-
 import java.util.ArrayList;
 
 public interface Problem {
 
-    public State initialState();
+    State initialState();
 
-    public ArrayList<Action> actions(State s);
+    ArrayList<Action> actions(State s);
 
-    public State result(State s,Action a);
+    State result(State s,Action a);
 
-    public boolean goalTest(State s);
+    boolean goalTest(State s);
 
-    public int utility(Action a);
+    int utility(Action a);
+
+    int heuristic(State s);
 
 }
