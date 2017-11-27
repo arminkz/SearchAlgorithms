@@ -10,6 +10,10 @@ import java.util.Queue;
 public class BFS {
 
     public static ArrayList<Action> search(Problem p){
+        return search(p,true);
+    }
+
+    public static ArrayList<Action> search(Problem p,boolean isGraphSearch){
 
         Queue<Expandable> BFSQueue = new LinkedList<>();
         ArrayList<State> closed = new ArrayList<>();
@@ -33,10 +37,12 @@ public class BFS {
                 for(Action a : p.actions(s.state)){
                     for(State targetState : p.result(s.state,a)) { //undeterministic states (more than 1)
                         boolean mustAdd = true;
-                        for (State closedState : closed) {
-                            if (closedState.isEquals(targetState)) {
-                                mustAdd = false;
-                                break;
+                        if(isGraphSearch) {
+                            for (State closedState : closed) {
+                                if (closedState.isEquals(targetState)) {
+                                    mustAdd = false;
+                                    break;
+                                }
                             }
                         }
                         for (Expandable openState : BFSQueue) {

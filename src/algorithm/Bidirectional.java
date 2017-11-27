@@ -9,6 +9,10 @@ import java.util.Queue;
 public class Bidirectional {
 
     public static ArrayList<Action> search(BidirectionalProblem p){
+        return search(p,true);
+    }
+
+    public static ArrayList<Action> search(BidirectionalProblem p,boolean isGraphSearch){
 
         Queue<Expandable> QueueA = new LinkedList<>();
         Queue<Expandable> QueueB = new LinkedList<>();
@@ -42,10 +46,12 @@ public class Bidirectional {
                 for(Action act : p.actions(a.state)){
                     for(State targetState : p.result(a.state,act)) {
                         boolean mustAdd = true;
-                        for (Expandable closedE : closedA) {
-                            if (closedE.state.isEquals(targetState)) {
-                                mustAdd = false;
-                                break;
+                        if(isGraphSearch){
+                            for (Expandable closedE : closedA) {
+                                if (closedE.state.isEquals(targetState)) {
+                                    mustAdd = false;
+                                    break;
+                                }
                             }
                         }
                         for (Expandable openState : QueueA) {
@@ -72,10 +78,12 @@ public class Bidirectional {
                 for(Action act : p.actionsBd(b.state)){
                     for(State targetState : p.resultBd(b.state,act)) {
                         boolean mustAdd = true;
-                        for (Expandable closedE : closedB) {
-                            if (closedE.state.isEquals(targetState)) {
-                                mustAdd = false;
-                                break;
+                        if(isGraphSearch){
+                            for (Expandable closedE : closedB) {
+                                if (closedE.state.isEquals(targetState)) {
+                                    mustAdd = false;
+                                    break;
+                                }
                             }
                         }
                         for (Expandable openState : QueueB) {

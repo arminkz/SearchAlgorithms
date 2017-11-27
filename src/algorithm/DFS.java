@@ -13,8 +13,12 @@ public class DFS {
         return search(p,-1);
     }
 
-    //Search with Depth Limit (DLS)
     public static ArrayList<Action> search(Problem p,int depthLimit){
+        return search(p,depthLimit,true);
+    }
+
+    //Search with Depth Limit (DLS)
+    public static ArrayList<Action> search(Problem p,int depthLimit,boolean isGraphSearch){
 
         Stack<Expandable> DFSStack = new Stack<>();
         ArrayList<State> closed = new ArrayList<>();
@@ -40,10 +44,12 @@ public class DFS {
                 for(Action a : p.actions(s.state)){
                     for(State targetState : p.result(s.state,a)) {
                         boolean mustAdd = true;
-                        for (State closedState : closed) {
-                            if (closedState.isEquals(targetState)) {
-                                mustAdd = false;
-                                break;
+                        if(isGraphSearch) {
+                            for (State closedState : closed) {
+                                if (closedState.isEquals(targetState)) {
+                                    mustAdd = false;
+                                    break;
+                                }
                             }
                         }
                         for (Expandable openState : DFSStack) {
