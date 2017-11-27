@@ -19,11 +19,13 @@ public class DFS {
         Stack<Expandable> DFSStack = new Stack<>();
         ArrayList<State> closed = new ArrayList<>();
 
-        Expandable initSAS = new Expandable();
-        initSAS.state = p.initialState();
-        initSAS.actionSequence = new ArrayList<>();
+        Expandable initE = new Expandable();
+        initE.state = p.initialState();
+        initE.actionSequence = new ArrayList<>();
 
-        DFSStack.add(initSAS);
+        DFSStack.add(initE);
+        closed.add(initE.state);
+
         while(!DFSStack.empty()){
             Expandable s = DFSStack.pop();
             if(p.goalTest(s.state)){
@@ -37,31 +39,32 @@ public class DFS {
                 if(depthLimit != -1 && s.actionSequence.size() >= depthLimit) continue;
                 //Expand Childs
                 for(Action a : p.actions(s.state)){
-                    State targetState = p.result(s.state,a);
-                    boolean mustAdd = true;
-                    for(State closedState : closed){
-                        if(closedState.isEquals(targetState)){
-                            mustAdd = false;
-                            break;
+                    for(State targetState : p.result(s.state,a)) {
+                        boolean mustAdd = true;
+                        for (State closedState : closed) {
+                            if (closedState.isEquals(targetState)) {
+                                mustAdd = false;
+                                break;
+                            }
                         }
-                    }
-                    for(Expandable openState : DFSStack){
-                        if(openState.state.isEquals(targetState)){
-                            mustAdd = false;
-                            break;
+                        for (Expandable openState : DFSStack) {
+                            if (openState.state.isEquals(targetState)) {
+                                mustAdd = false;
+                                break;
+                            }
                         }
-                    }
-                    if(mustAdd) {
-                        Expandable SAS = new Expandable();
-                        SAS.state = targetState;
-                        //Clone Parent Action Sequence
-                        ArrayList<Action> asClone = new ArrayList<>();
-                        for (Action sa : s.actionSequence) {
-                            asClone.add(sa);
+                        if (mustAdd) {
+                            Expandable SAS = new Expandable();
+                            SAS.state = targetState;
+                            //Clone Parent Action Sequence
+                            ArrayList<Action> asClone = new ArrayList<>();
+                            for (Action sa : s.actionSequence) {
+                                asClone.add(sa);
+                            }
+                            asClone.add(a);
+                            SAS.actionSequence = asClone;
+                            DFSStack.push(SAS);
                         }
-                        asClone.add(a);
-                        SAS.actionSequence = asClone;
-                        DFSStack.push(SAS);
                     }
                 }
             }

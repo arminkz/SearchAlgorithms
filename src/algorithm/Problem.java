@@ -8,7 +8,7 @@ public interface Problem {
 
     ArrayList<Action> actions(State s);
 
-    State result(State s,Action a);
+    ArrayList<State> result(State s,Action a);
 
     boolean goalTest(State s);
 

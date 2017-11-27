@@ -17,6 +17,7 @@ public class UCS {
         initE.actionSequence = new ArrayList<>();
 
         UCSQueue.add(initE);
+        closed.add(initE.state);
 
         while(!UCSQueue.isEmpty()){
             Expandable s = UCSQueue.remove();
@@ -29,38 +30,39 @@ public class UCS {
                 closed.add(s.state);
                 //Expand Childs
                 for(Action a : p.actions(s.state)){
-                    State targetState = p.result(s.state,a);
-                    boolean mustAdd = true;
-                    for(State closedState : closed){
-                        if(closedState.isEquals(targetState)){
-                            mustAdd = false;
-                            break;
-                        }
-                    }
-                    for(Expandable openState : UCSQueue){
-                        if(openState.state.isEquals(targetState)){
-                            //must update is less cost reached
-                            if(s.cost + p.utility(a) < openState.getCost()){
-                                openState.setCost(s.cost + p.utility(a));
+                    for(State targetState : p.result(s.state,a)) {
+                        boolean mustAdd = true;
+                        for (State closedState : closed) {
+                            if (closedState.isEquals(targetState)) {
+                                mustAdd = false;
+                                break;
                             }
-                            //no need to add it again
-                            mustAdd = false;
-                            break;
                         }
-                    }
-                    if(mustAdd) {
-                        Expandable E = new Expandable();
-                        E.state = targetState;
-                        //Clone Parent Action Sequence
-                        ArrayList<Action> asClone = new ArrayList<>();
-                        for (Action sa : s.actionSequence) {
-                            asClone.add(sa);
+                        for (Expandable openState : UCSQueue) {
+                            if (openState.state.isEquals(targetState)) {
+                                //must update is less cost reached
+                                if (s.cost + p.utility(a) < openState.getCost()) {
+                                    openState.setCost(s.cost + p.utility(a));
+                                }
+                                //no need to add it again
+                                mustAdd = false;
+                                break;
+                            }
                         }
-                        asClone.add(a);
-                        E.actionSequence = asClone;
-                        //Set Cost (Parent Cost + Action Cost)
-                        E.setCost(s.cost + p.utility(a));
-                        UCSQueue.add(E);
+                        if (mustAdd) {
+                            Expandable E = new Expandable();
+                            E.state = targetState;
+                            //Clone Parent Action Sequence
+                            ArrayList<Action> asClone = new ArrayList<>();
+                            for (Action sa : s.actionSequence) {
+                                asClone.add(sa);
+                            }
+                            asClone.add(a);
+                            E.actionSequence = asClone;
+                            //Set Cost (Parent Cost + Action Cost)
+                            E.setCost(s.cost + p.utility(a));
+                            UCSQueue.add(E);
+                        }
                     }
                 }
             }

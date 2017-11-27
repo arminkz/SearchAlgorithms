@@ -17,6 +17,7 @@ public class AStar {
         initE.actionSequence = new ArrayList<>();
 
         ASQueue.add(initE);
+        closed.add(initE.state);
 
         while(!ASQueue.isEmpty()){
             Expandable s = ASQueue.remove();
@@ -29,38 +30,39 @@ public class AStar {
                 closed.add(s.state);
                 //Expand Childs
                 for(Action a : p.actions(s.state)){
-                    State targetState = p.result(s.state,a);
-                    boolean mustAdd = true;
-                    for(State closedState : closed){
-                        if(closedState.isEquals(targetState)){
-                            mustAdd = false;
-                            break;
-                        }
-                    }
-                    for(Expandable openState : ASQueue){
-                        if(openState.state.isEquals(targetState)){
-                            //must update is less cost reached
-                            if(s.cost + (p.utility(a)+p.heuristic(targetState) ) < openState.getCost()){
-                                openState.setCost(s.cost + (p.utility(a)+p.heuristic(targetState)));
+                    for(State targetState : p.result(s.state,a)) {
+                        boolean mustAdd = true;
+                        for (State closedState : closed) {
+                            if (closedState.isEquals(targetState)) {
+                                mustAdd = false;
+                                break;
                             }
-                            //no need to add it again
-                            mustAdd = false;
-                            break;
                         }
-                    }
-                    if(mustAdd) {
-                        Expandable E = new Expandable();
-                        E.state = targetState;
-                        //Clone Parent Action Sequence
-                        ArrayList<Action> asClone = new ArrayList<>();
-                        for (Action sa : s.actionSequence) {
-                            asClone.add(sa);
+                        for (Expandable openState : ASQueue) {
+                            if (openState.state.isEquals(targetState)) {
+                                //must update is less cost reached
+                                if (s.cost + (p.utility(a) + p.heuristic(targetState)) < openState.getCost()) {
+                                    openState.setCost(s.cost + (p.utility(a) + p.heuristic(targetState)));
+                                }
+                                //no need to add it again
+                                mustAdd = false;
+                                break;
+                            }
                         }
-                        asClone.add(a);
-                        E.actionSequence = asClone;
-                        //Set Cost (Parent Cost + Action Cost + Target Heuristic)
-                        E.setCost(s.cost + (p.utility(a)+p.heuristic(targetState)));
-                        ASQueue.add(E);
+                        if (mustAdd) {
+                            Expandable E = new Expandable();
+                            E.state = targetState;
+                            //Clone Parent Action Sequence
+                            ArrayList<Action> asClone = new ArrayList<>();
+                            for (Action sa : s.actionSequence) {
+                                asClone.add(sa);
+                            }
+                            asClone.add(a);
+                            E.actionSequence = asClone;
+                            //Set Cost (Parent Cost + Action Cost + Target Heuristic)
+                            E.setCost(s.cost + (p.utility(a) + p.heuristic(targetState)));
+                            ASQueue.add(E);
+                        }
                     }
                 }
             }
