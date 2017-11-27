@@ -55,7 +55,7 @@ public class EightPuzzleProblem implements Problem {
     }
 
     @Override
-    public State result(State s, Action a) {
+    public ArrayList<State> result(State s, Action a) {
         EightPuzzleState eps = (EightPuzzleState)s;
         EightPuzzleState newstate = eps.clone();
 
@@ -95,7 +95,9 @@ public class EightPuzzleProblem implements Problem {
                 break;
         }
 
-        return newstate;
+        ArrayList<State> singleState = new ArrayList<>();
+        singleState.add(newstate);
+        return singleState;
     }
 
     @Override

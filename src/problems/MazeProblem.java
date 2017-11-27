@@ -40,20 +40,25 @@ public class MazeProblem implements Problem {
     }
 
     @Override
-    public State result(State s, Action a) {
+    public ArrayList<State> result(State s, Action a) {
         MazeState ms = (MazeState)s;
 
+        ArrayList<State> singleState = new ArrayList<>();
         switch(a.actionCode){
             case 0:
-                return new MazeState(ms.x-1,ms.y);
+                singleState.add(new MazeState(ms.x-1,ms.y));
+                break;
             case 1:
-                return new MazeState(ms.x,ms.y-1);
+                singleState.add(new MazeState(ms.x,ms.y-1));
+                break;
             case 2:
-                return new MazeState(ms.x+1,ms.y);
+                singleState.add(new MazeState(ms.x+1,ms.y));
+                break;
             case 3:
-                return new MazeState(ms.x,ms.y+1);
+                singleState.add(new MazeState(ms.x,ms.y+1));
+                break;
         }
-        return null;
+        return singleState;
     }
 
     @Override

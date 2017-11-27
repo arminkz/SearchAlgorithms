@@ -5,7 +5,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
-public class PouringProblem implements Problem {
+public class PouringProblem implements BidirectionalProblem {
 
     public static final int CapacityA = 4;
     public static final int CapacityB = 3;
@@ -36,7 +36,7 @@ public class PouringProblem implements Problem {
     }
 
     @Override
-    public State result(State s, Action a) {
+    public ArrayList<State> result(State s, Action a) {
         PouringState cur = (PouringState)s;
         int fa = cur.flaskA;
         int fb = cur.flaskB;
@@ -66,7 +66,9 @@ public class PouringProblem implements Problem {
                 break;
         }
 
-        return new PouringState(fa,fb);
+        ArrayList<State> singleState = new ArrayList<>();
+        singleState.add(new PouringState(fa,fb));
+        return singleState;
     }
 
     @Override
@@ -86,6 +88,79 @@ public class PouringProblem implements Problem {
         throw new NotImplementedException();
     }
 
+
+    @Override
+    public State goalState() {
+        return new PouringState(2,3);
+    }
+
+    @Override
+    public ArrayList<Action> actionsBd(State s) {
+        PouringState ps = (PouringState)s;
+        // 1 : Fill Flask A
+        // 2 : Fill Flask B
+        // 3 : Empty Flask A
+        // 4 : Empty Flask B
+        // 5 : Pour A -> B
+        // 6 : Pour B -> A
+
+        ArrayList<Action> acts = new ArrayList<>();
+        if(ps.flaskA == CapacityA) acts.add(new Action(1));
+        if(ps.flaskB == CapacityB) acts.add(new Action(2));
+        if(ps.flaskA == 0) acts.add(new Action(3));
+        if(ps.flaskB == 0) acts.add(new Action(4));
+        if(ps.flaskB != 0 && ps.flaskA != CapacityA) acts.add(new Action(5));
+        if(ps.flaskA != 0 && ps.flaskB != CapacityB) acts.add(new Action(6));
+        return acts;
+    }
+
+    @Override
+    public ArrayList<State> resultBd(State s, Action a) {
+        PouringState cur = (PouringState)s;
+        int fa = cur.flaskA;
+        int fb = cur.flaskB;
+
+        ArrayList<State> possibleStates = new ArrayList<>();
+
+        switch(a.actionCode){
+            case 1:
+                for (int i = 0; i < CapacityA ; i++) {
+                    possibleStates.add(new PouringState(i,fb));
+                }
+                break;
+            case 2:
+                for (int i = 0; i < CapacityB ; i++) {
+                    possibleStates.add(new PouringState(fa,i));
+                }
+                break;
+            case 3:
+                for (int i = 1 ; i <= CapacityA ; i++) {
+                    possibleStates.add(new PouringState(i,fb));
+                }
+                break;
+            case 4:
+                for (int i = 1 ; i <= CapacityB ; i++) {
+                    possibleStates.add(new PouringState(fa,i));
+                }
+                break;
+            case 5:
+                while(fa < CapacityA - 1 && fb>0){
+                    fa++;
+                    fb--;
+                    possibleStates.add(new PouringState(fa,fb));
+                }
+                break;
+            case 6:
+                while(fb < CapacityB - 1 && fa>0){
+                    fa--;
+                    fb++;
+                    possibleStates.add(new PouringState(fa,fb));
+                }
+                break;
+        }
+
+        return possibleStates;
+    }
 }
 
 class PouringState implements State{
