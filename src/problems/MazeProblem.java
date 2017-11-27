@@ -66,6 +66,13 @@ public class MazeProblem implements Problem {
     public int utility(Action a) {
         return 1;
     }
+
+    @Override
+    public int heuristic(State s) {
+        MazeState ms = (MazeState)s;
+        //Using Manhattan Heuristic
+        return (MapSizeX - 1 - ms.x) + (MapSizeY - 1 - ms.y);
+    }
 }
 
 class MazeState implements State {
