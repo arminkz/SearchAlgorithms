@@ -1,3 +1,5 @@
+package visualization;
+
 import java.util.ArrayList;
 
 public class GraphNode {

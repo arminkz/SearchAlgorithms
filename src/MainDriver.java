@@ -43,8 +43,8 @@ public class MainDriver {
             for(Action a : actions) System.out.print(a.actionCode + " ");
         }*/
 
-        //Solve Maze with UCS
-        Scanner scn = new Scanner(System.in);
+        //Solve visualization.Maze with UCS
+        /*Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         int m = scn.nextInt();
         int[][] map = new int[n][m];
@@ -55,6 +55,22 @@ public class MainDriver {
         }
         MazeProblem mp = new MazeProblem(n,m,map);
         ArrayList<Action> actions = UCS.search(mp);
+        if(actions != null){
+            for(Action a : actions) System.out.print(a.actionCode + " ");
+        }*/
+
+        //Solve visualization.Maze with A*
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+        int[][] map = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                map[i][j] = scn.nextInt();
+            }
+        }
+        MazeProblem mp = new MazeProblem(n,m,map);
+        ArrayList<Action> actions = AStar.search(mp);
         if(actions != null){
             for(Action a : actions) System.out.print(a.actionCode + " ");
         }

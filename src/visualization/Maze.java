@@ -1,14 +1,15 @@
+package visualization;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Maze extends JPanel {
 
 
     public static void main(String[] args) {
         JFrame mainFrame = new JFrame();
-        mainFrame.setTitle("Maze v0.1");
+        mainFrame.setTitle("visualization.Maze v0.1");
         mainFrame.setSize(500,500);
         Maze m = new Maze();
         //m.setBackground(new Color(150,150,150));
@@ -25,7 +26,7 @@ public class Maze extends JPanel {
 
         this.setLayout(new BorderLayout());
         JButton solveButton = new JButton();
-        solveButton.setText("Solve Maze !");
+        solveButton.setText("Solve visualization.Maze !");
         solveButton.addActionListener((ActionEvent e) -> solve());
         this.add(solveButton,BorderLayout.SOUTH);
 
@@ -66,7 +67,7 @@ public class Maze extends JPanel {
 
     boolean[][] visited;
 
-    public void addAdjNodes(int x,int y,GraphNode n){
+    public void addAdjNodes(int x, int y, GraphNode n){
 
     }
 

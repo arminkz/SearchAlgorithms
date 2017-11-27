@@ -1,3 +1,5 @@
+package visualization;
+
 public class Graph {
 
     GraphNode root;
