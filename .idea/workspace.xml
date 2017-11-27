@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e399ca5-f5d1-4e15-b969-30168a503f69" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Graph.java" afterPath="$PROJECT_DIR$/src/visualization/Graph.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GraphNode.java" afterPath="$PROJECT_DIR$/src/visualization/GraphNode.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Maze.java" afterPath="$PROJECT_DIR$/src/visualization/Maze.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/MazeCell.java" afterPath="$PROJECT_DIR$/src/visualization/MazeCell.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainDriver.java" afterPath="$PROJECT_DIR$/src/MainDriver.java" />
-    </list>
+    <list default="true" id="2e399ca5-f5d1-4e15-b969-30168a503f69" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -79,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainDriver.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainDriver.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainDriver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+            <state relative-caret-position="1155">
+              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,7 +107,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphNode.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GraphNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/visualization/GraphNode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
@@ -224,45 +218,6 @@
               <item name="SearchAlgorithms" type="b2602c69:ProjectViewProjectNode" />
               <item name="SearchAlgorithms" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SearchAlgorithms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SearchAlgorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SearchAlgorithms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SearchAlgorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="problems" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SearchAlgorithms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SearchAlgorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="problems" type="462c0819:PsiDirectoryNode" />
-              <item name="EightPuzzleProblem.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="SearchAlgorithms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SearchAlgorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="problems" type="462c0819:PsiDirectoryNode" />
-              <item name="MazeProblem.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="SearchAlgorithms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SearchAlgorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="problems" type="462c0819:PsiDirectoryNode" />
-              <item name="PouringProblem.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="SearchAlgorithms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SearchAlgorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="visualization" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -453,12 +408,12 @@
       <workItem from="1511792535923" duration="2071000" />
       <workItem from="1511794681321" duration="1694000" />
       <workItem from="1511796508199" duration="1679000" />
-      <workItem from="1511798586627" duration="690000" />
+      <workItem from="1511798586627" duration="759000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25441000" />
+    <option name="totallyTimeSpent" value="25510000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="29" y="22" width="1439" height="809" extended-state="0" />
@@ -946,16 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainDriver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/visualization/MazeCell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -987,6 +932,16 @@
         <state relative-caret-position="60">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
