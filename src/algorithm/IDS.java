@@ -1,5 +1,5 @@
 package algorithm;
-//Iterative Deepning Search
+//Iterative Deepening Search
 //Created By Armin
 
 import java.util.ArrayList;

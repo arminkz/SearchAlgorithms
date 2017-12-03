@@ -20,7 +20,7 @@ public class MainDriver {
         System.out.println("");
 
         //Solve Pouring Problem with Bidirectional
-        ArrayList<Action> actions2 = Bidirectional.search(pp);
+        ArrayList<Action> actions2 = BFS.search(pp);
         if(actions2 != null){
             for(Action a : actions2) System.out.print(a.actionCode + " ");
         }

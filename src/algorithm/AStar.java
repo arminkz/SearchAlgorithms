@@ -1,5 +1,5 @@
 package algorithm;
-//Uniform Cost Search Algorithm
+//AStar Search Algorithm
 //Created By Armin
 
 import java.util.ArrayList;
